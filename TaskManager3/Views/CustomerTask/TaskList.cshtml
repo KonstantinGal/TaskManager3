@@ -11,7 +11,6 @@
 
 <h2>Tasks Menu</h2>
 
-<button>@Html.ActionLink("Add Task","New")</button>
 
 
 @if (!Model.Any())
@@ -20,13 +19,12 @@
 }
 else
 {
-    <table id="CustomerTasks" class="table table-bordered table-hover">
+    <table id="CustomerTasks" class="table tableTask">
         <thead>
         <tr>
             <th>Task</th>
             <th>Details</th>
             <th>Complete</th>
-            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -36,24 +34,29 @@ else
                 <td>@customerTask.Name</td>
                 <td>@customerTask.Details</td>
                 <td>
-                    <div class="checkbox-inline">
+                    <div class="tablecontent">
 
                         @Html.CheckBoxFor(c => customerTask.IsCompleted)
-                    
+                        @Html.ActionLink("Complete", "IsComplete", "CustomerTask", new { id = customerTask.Id }, null)
                     </div>
 
 
                 </td>
-                <td>
+                @*<td>
                     <div class="btn-link">
-                        @Html.ActionLink("Complete", "IsComplete", "CustomerTask", new {id = customerTask.Id}, null)
+                        
                     </div>
-                </td>
+                </td>*@
             </tr>
         }
         </tbody>
     </table>
 }
+
+    <div>
+        <button class="addNewButton" type="submit">@Html.ActionLink("Add", "New")</button>
+    </div>
+
 
 @*@section scripts {
 
