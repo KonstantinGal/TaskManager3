@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TaskManager3.Models.CustomerTask>
+
+
+@{
+    ViewBag.Title = "TaskList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tasks Menu</h2>
+
+@if (!Model.Any())
+{
+    <p>No current tasks available.</p>
+}
+else
+{
+    <table id="CustomerTasks" class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Task</th>
+            <th>Details</th>
+            <th>Complete</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var customerTask in Model)
+        {
+            <tr>
+                <td>@customerTask.Name</td>
+                <td>@customerTask.Details</td>
+                <td>
+                    
+                </td>
+                <td>
+                    <input class="form-check-inline js-complete" type="checkbox" name="Complete" value="True"/> Complete
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@section scripts {
+
+    <script>
+        $(document).ready(function() {
+            $("#CustomerTasks").on("click", ".js-complete", function () {
+                var input = $(this);
+                $.ajax({
+                    url: 
+                    method: "COMPLETE",
+                    success: function () {
+                        input.parents("tr").checked();
+                    }
+                })
+            })
+        })
+    </script>    
+}
