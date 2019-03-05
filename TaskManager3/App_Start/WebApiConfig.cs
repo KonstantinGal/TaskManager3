@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Profile;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace TaskManager3
 {
@@ -9,6 +12,10 @@ namespace TaskManager3
     {
         public static void Register(HttpConfiguration config)
         {
+            var setting = config.Formatters.JsonFormatter.SerializerSettings;
+            setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            setting.Formatting = Formatting.Indented;
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

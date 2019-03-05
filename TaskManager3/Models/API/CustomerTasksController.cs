@@ -30,14 +30,15 @@ namespace TaskManager3.Models.API
         }
 
         [HttpPost]
-        public CustomerTask CreateCustomerTask(CustomerTask customerTask)
+        public IHttpActionResult CreateCustomerTask(CustomerTask customerTask)
         {
             if (!ModelState.IsValid)
                 throw new HttpRequestException(HttpStatusCode.BadRequest.ToString());
             _context.CustomerTasks.Add(customerTask);
             _context.SaveChanges();
 
-            return customerTask;
+            
+            return Created(new Uri(Request.RequestUri + "/" + customerTask.Id), customerTask);
         }
 
         [HttpPut]

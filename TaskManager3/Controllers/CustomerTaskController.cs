@@ -28,5 +28,24 @@ namespace TaskManager3.Controllers
 
             return View(customerTasks);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        public ActionResult IsComplete(CustomerTask customerTask)
+        {
+            var taskId = customerTask.Id;
+            var customerTaskInDb = _context.CustomerTasks.SingleOrDefault(c => c.Id == taskId);
+
+            customerTaskInDb.Name = customerTask.Name;
+            customerTaskInDb.Details = customerTaskInDb.Details;
+            customerTaskInDb.IsCompleted = customerTaskInDb.IsCompleted;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("TaskList");
+        }
     }
 }

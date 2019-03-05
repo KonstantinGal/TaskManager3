@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201903051456435_AddTaskIsComplete.Designer.cs">
       <DependentUpon>201903051456435_AddTaskIsComplete.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903051644117_Checkbox.cs" />
+    <Compile Include="Migrations\201903051644117_Checkbox.Designer.cs">
+      <DependentUpon>201903051644117_Checkbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API\CustomerTasksController.cs" />
@@ -310,6 +314,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\CustomerTask\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -336,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903051456435_AddTaskIsComplete.resx">
       <DependentUpon>201903051456435_AddTaskIsComplete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903051644117_Checkbox.resx">
+      <DependentUpon>201903051644117_Checkbox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

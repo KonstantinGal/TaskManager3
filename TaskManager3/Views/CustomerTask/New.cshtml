@@ -1,0 +1,21 @@
+﻿@model TaskManager3.Models.CustomerTask
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Task</h2>
+
+@using (Html.BeginForm("Create", "CustomerTask"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new {@class = "form-control"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Details)
+        @Html.TextBoxFor(c => c.Details, new {@class = "form-control"})
+    </div>
+
+}
