@@ -1,4 +1,7 @@
-﻿@model IEnumerable<TaskManager3.Models.CustomerTask>
+﻿@using System.Web.Mvc.Html
+@using TaskManager3.Models
+@using RedirectToRouteResult = System.Web.Http.Results.RedirectToRouteResult
+@model IEnumerable<TaskManager3.Models.CustomerTask>
 
 
 @{
@@ -7,6 +10,9 @@
 }
 
 <h2>Tasks Menu</h2>
+
+<button>@Html.ActionLink("Add Task","New")</button>
+
 
 @if (!Model.Any())
 {
@@ -40,7 +46,7 @@ else
                 </td>
                 <td>
                     <div class="btn-link">
-                        @Html.ActionLink("Complete", "IsComplete", "CustomerTask", customerTask)
+                        @Html.ActionLink("Complete", "IsComplete", "CustomerTask", new {id = customerTask.Id}, null)
                     </div>
                 </td>
             </tr>

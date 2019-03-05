@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201903051644117_Checkbox.Designer.cs">
       <DependentUpon>201903051644117_Checkbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903051653413_publicBool.cs" />
+    <Compile Include="Migrations\201903051653413_publicBool.Designer.cs">
+      <DependentUpon>201903051653413_publicBool.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\API\CustomerTasksController.cs" />
@@ -344,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903051644117_Checkbox.resx">
       <DependentUpon>201903051644117_Checkbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903051653413_publicBool.resx">
+      <DependentUpon>201903051653413_publicBool.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

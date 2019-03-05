@@ -24,24 +24,33 @@ namespace TaskManager3.Controllers
 
         public ActionResult TaskList()
         {
-            var customerTasks = _context.CustomerTasks.ToList();
+            var customerTasks = _context.CustomerTasks.ToList();    
 
             return View(customerTasks);
         }
 
         public ActionResult New()
         {
-            return View();
+            var customerTask = new CustomerTask();
+            return View(customerTask);
         }
 
-        public ActionResult IsComplete(CustomerTask customerTask)
+        [HttpPost]
+        public ActionResult Create(CustomerTask customerTask)
         {
-            var taskId = customerTask.Id;
-            var customerTaskInDb = _context.CustomerTasks.SingleOrDefault(c => c.Id == taskId);
+            _context.CustomerTasks.Add(customerTask);
+            _context.SaveChanges();
 
-            customerTaskInDb.Name = customerTask.Name;
-            customerTaskInDb.Details = customerTaskInDb.Details;
-            customerTaskInDb.IsCompleted = customerTaskInDb.IsCompleted;
+
+            return RedirectToAction("TaskList");
+        }
+
+        public ActionResult IsComplete(int id)
+        {
+            var customerTaskInDb = _context.CustomerTasks.SingleOrDefault(c => c.Id == id);
+
+
+            customerTaskInDb.IsCompleted = true;
 
             _context.SaveChanges();
 
