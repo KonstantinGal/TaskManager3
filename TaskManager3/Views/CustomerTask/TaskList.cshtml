@@ -9,7 +9,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tasks Menu</h2>
+<h2 id="tastMenuTitle">Tasks Menu</h2>
 
 
 
@@ -37,7 +37,15 @@ else
                     <div class="tablecontent">
 
                         @Html.CheckBoxFor(c => customerTask.IsCompleted)
-                        @Html.ActionLink("Complete", "IsComplete", "CustomerTask", new { id = customerTask.Id }, null)
+                        @if (customerTask.IsCompleted)
+                        {
+                            @Html.ActionLink("Undo", "Undo", "CustomerTask", new { id = customerTask.Id }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Complete", "IsComplete", "CustomerTask", new { id = customerTask.Id }, null)
+                        }
+
                     </div>
 
 
@@ -58,20 +66,11 @@ else
     </div>
 
 
-@*@section scripts {
+@section scripts {
 
     <script>
         $(document).ready(function() {
-            $("#CustomerTasks").on("click", ".js-complete", function () {
-                var input = $(this);
-                $.ajax({
-                    url: 
-                    method: "COMPLETE",
-                    success: function () {
-                        input.parents("tr").checked();
-                    }
-                })
-            })
+            $("#CustomerTasks").DataTable();
         })
     </script>    
-}*@
+}

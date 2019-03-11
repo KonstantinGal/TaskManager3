@@ -56,5 +56,16 @@ namespace TaskManager3.Controllers
 
             return RedirectToAction("TaskList");
         }
+
+        public ActionResult Undo(int id)
+        {
+            var customerTaskInDb = _context.CustomerTasks.SingleOrDefault(c => c.Id == id);
+
+            customerTaskInDb.IsCompleted = false;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("TaskList");
+        }
     }
 }
